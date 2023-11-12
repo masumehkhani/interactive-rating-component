@@ -2,8 +2,10 @@
 import Container from "./Container";
 import starLogo from "../assets/images/icon-star.svg";
 import { useState } from "react";
-
-const InteractiveRaiting = () => {
+interface Props{
+  onclickItem:(item:number)=>void
+}
+const InteractiveRaiting = ({onclickItem}:Props) => {
   const [hoveredItem, setHoveredItem] = useState<number|null>(null);
   const [hoveredBtn, setHoveredBtn] = useState('bg-Orange');
 
@@ -40,6 +42,7 @@ const InteractiveRaiting = () => {
             href="#"
             onMouseOver={() => handleHoveredItem(item)}
             onMouseOut={() => setHoveredItem(null)}
+            onClick={()=>onclickItem(item)}
           >
             <li className="text-lg">{item}</li>
           </a>
